@@ -57,7 +57,7 @@ class Dhbc(commands.Cog):
                 send = await ctx.send(embed=embed,file=discord.File(os.path.dirname(__file__) + "/cache/dhbc.png", filename="dhbc.png"))
                 if "a" in random_dhbc:
                     message = await wait_message(send)
-                    if str(message.content.lower()) == dapan:
+                    if str(message.content.lower()) == str(dapan).lower():
                         await ctx.send(f'bạn đã trả lời đúng, đáp án là: {dapan}')
                     elif str(message.content.lower()) == "gợi ý":
                         if money >= 50:
@@ -86,7 +86,7 @@ class Dhbc(commands.Cog):
                 embed.set_image(url = "attachment://dhbc.png")
                 send = await ctx.send(embed=embed,file=discord.File(os.path.dirname(__file__) + "/cache/dhbc.png", filename="dhbc.png"))
                 message = await wait_message(send)
-                if message.content.upper() == answer:
+                if message.content.lower() == str(answer).lower():
                     await ctx.send(f'bạn đã trả lời đúng, đáp án là: {answer}')
                 elif message.content.lower() == "gợi ý":
                     if money >= 50:
@@ -95,7 +95,7 @@ class Dhbc(commands.Cog):
                     else:
                         await ctx.send("ban khong du 50$ de xem goi y(tiep tuc reply cau hoi o tren de tra loi")
                     message = await wait_message(send)
-                    if message.content.upper() == answer:
+                    if message.content.lower() == answer.lower():
                         await ctx.send(f"bạn đã trả lời đúng, đáp án là: {answer}")
                     else:
                         await ctx.send(f"sai roi, dap an la {answer}")
