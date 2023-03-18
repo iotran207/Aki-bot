@@ -43,7 +43,7 @@ class Marry(commands.Cog):
                 data[str(user.id)]["dating"]["friend_name"] = ctx.author.name
                 data[str(user.id)]["dating"]["friend_avar"] = str(ctx.author.display_avatar.url)
                 save_member_data(data)
-                await ctx.send(f":heart: **chúc mừng {ctx.author.name} và {user.name} đã về chung 1 nhà, hãy sử dụng lệnh marry_info để xem thông tin tình trạng của bạn với người ấy** :heart:")
+                await ctx.send(f":heart: **chúc mừng {ctx.author.name} và {user.name} đã về chung 1 nhà, hãy sử dụng lệnh dating để xem thông tin tình trạng của bạn với người ấy** :heart:")
             else:
                 await send.delete()
         except Exception as e:
