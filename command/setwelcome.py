@@ -26,7 +26,7 @@ class Setwelcome(commands.Cog):
                     await set.send(f"<@{ctx.author.id}> đã chọn channel <#{channel}> mang id {channel} là kênh chào mừng thành viên mới")
             elif mode == "message" and check:
                 msg = str(channel)
-                data[str(ctx.message.guild.id)]["welcome"]["message"] = msg.replace("<<member>>", f"<@{member.id}>")
+                data[str(ctx.message.guild.id)]["welcome"]["message"] = msg
                 save_member_data(data)
                 await ctx.reply("đã đặt thành công tin nhắn chào mừng thành viên mới")
         except Exception as e:
