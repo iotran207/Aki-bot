@@ -1,5 +1,5 @@
 from discord.ext import commands
-from main import get_bank_data
+from main import get_config
 class React_to_delete(commands.Cog):
     config = {
         "event": True
@@ -9,7 +9,7 @@ class React_to_delete(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self,payload):
-        config = await get_bank_data()
+        config = await get_config()
         if config["event"]["react_to_delete"]:
             message = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
             if(message.author.id == self.bot.user.id):
