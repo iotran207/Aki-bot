@@ -16,7 +16,6 @@ from host.webdriver import server
 
 # khai báo
 # =============================================#
-
 nest_asyncio.apply()
 with open('config.json', 'r') as f:
     config = json.load(f)
@@ -60,7 +59,10 @@ async def get_bank_data():
         users = json.load(f)
     return users
 
-
+def get_config():
+    with open("config.json", "r") as f:
+        config = json.load(f)
+    return config
 def save_member_data(data):
     with open("command/data.json", 'w') as f:
         json.dump(data, f)
@@ -218,4 +220,4 @@ except Exception as e:
     loop.run_until_complete(main())
 
 # =============================================#
-#Chúc bạn chạy bot thành công
+# Chúc bạn chạy bot thành công
