@@ -5,5 +5,8 @@
     "bot_name":"admin bot",
     "status":"hi i'm aki bot",
     "on_replit": false,
+    "event": {
+        "react_to_delete": false
+    },
     "token": ""
 }
