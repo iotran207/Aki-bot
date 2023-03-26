@@ -13,14 +13,15 @@ class Welcome(commands.Cog):
     async def on_member_join(self,member):
         try:
             data = await get_bank_data()
-            check = data.get(str(member.guild.id))
+            check = data.get(f"{member.guild.id}")
             if check and check["welcome"].get("channel"):
                 async with aiohttp.ClientSession() as session:
                     get = await session.get(f"https://nekos.best/api/v2/cuddle?amount=1")
                     data = await get.json()
                     if get.status == 200:
                         gif = data["results"][0]["url"]
-                channel = self.bot.get_channel(data[str(member.guild.id)]["welcome"]["channel"])
+                data = await get_bank_data()
+                channel = self.bot.get_channel(data[f"{member.guild.id}"]["welcome"]["channel"])
                 if check["welcome"].get("message"):
                     msg = check["welcome"]["message"]
                     em = discord.Embed(title="===***WELCOME***===", description=f'{msg.replace("<<member>>", f"<@{member.id}>")}', color = 0xFFF)
