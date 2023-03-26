@@ -17,14 +17,28 @@ class Setwelcome(commands.Cog):
         try:
             await open_account(ctx.message.guild.id)
             data = await get_bank_data()
-            check = data[f"{ctx.message.guild.id}"].get("welcome")
-            if mode == "channel" and check:
+            check = data[f"{ctx.message.guild.id}"]
+            if not check.get("welcome"):
+                data[f"{ctx.message.guild.id}"]["welcome"] = {}
+                save_member_data(data)
+                if mode == "channel":
+                    set = self.bot.get_channel(int(channel))
+                    if set:
+                        data[f"{ctx.message.guild.id}"]["welcome"]["channel"] = int(channel)
+                        save_member_data(data)
+                        await set.send(f"<@{ctx.author.id}> da chon channel <#{channel}> mang id {channel} la kenh chao mung thanh vien moi")
+                elif mode == "message":
+                    msg = str(channel)
+                    data[str(ctx.message.guild.id)]["welcome"]["message"] = msg
+                    save_member_data(data)
+                    await ctx.reply("đã đặt thành công tin nhắn chào mừng thành viên mới")
+            elif mode == "channel":
                 set = self.bot.get_channel(int(channel))
                 if set:
                     data[f"{ctx.message.guild.id}"]["welcome"]["channel"] = int(channel)
                     save_member_data(data)
                     await set.send(f"<@{ctx.author.id}> đã chọn channel <#{channel}> mang id {channel} là kênh chào mừng thành viên mới")
-            elif mode == "message" and check:
+            elif mode == "message":
                 msg = str(channel)
                 data[str(ctx.message.guild.id)]["welcome"]["message"] = msg
                 save_member_data(data)
