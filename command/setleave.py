@@ -5,7 +5,7 @@ from main import get_bank_data, open_account, save_member_data
 class Setleave(commands.Cog):
     config = {
         "name": "setleave",
-        "desc": "chon channel de gui tin nhan tam biet thanh vien khi ho roi di",
+        "desc": "cài đặt channel để gửi tin nhắn tạm biệt thành viên khi họ rời đi",
         "use": "setleave [message/channel] <messsage (dùng <<member>> thay cho tag thanh vien)/id_channel>",
         "author": 'Anh Duc(aki team)'
     }
