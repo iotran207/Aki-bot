@@ -63,6 +63,7 @@ def get_config():
     with open("config.json", "r") as f:
         config = json.load(f)
     return config
+    
 def save_member_data(data):
     with open("command/data.json", 'w') as f:
         json.dump(data, f)
@@ -84,6 +85,7 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_ready():
+    await bot.tree.sync()
     task_loop.start()
 
 
@@ -115,13 +117,13 @@ async def on_message(message):
 
 
 async def main():
-    thong_bao = requests.get(url='https://api-iotran.tk/aki-bot/update').json()
+    thong_bao = requests.get(url='https://api.aggstrawvn.repl.co/').json()
     print(bcolors.WARNING + '                      MODULE' + bcolors.ENDC)
     print('═══════════════════════════════════════════════════')
     dem_lenh = 0
     commands = os.listdir('command')
     for command in commands:
-        if (command == '__pycache__' or command == 'random_list' or command == "data.json" or command == "cache"):
+        if (command == '__pycache__' or command == 'random_list' or command == "data.json" or command == "cache" or command == "docs.py"):
             pass
         else:
             try:
@@ -135,7 +137,7 @@ async def main():
     print(bcolors.WARNING + '                      EVENT' + bcolors.ENDC)
     print('═════════════════════════════════════════════════════')
     for command in os.listdir("./event"):
-        if (command == '__pycache__' or command == 'random_list' or command == "data.json"):
+        if (command == '__pycache__' or command == 'random_list' or command == "data.json" or command == "docs.py"):
             pass
         else:
             await bot.load_extension(f"event.{command[:-3]}")
@@ -165,7 +167,7 @@ async def main():
 ''')
     try:
         print(bcolors.WARNING + f">> Khởi động thành công {config['bot_name']} <<" + bcolors.ENDC)
-        print(bcolors.OKBLUE + f'''Lời nhắn của aki team :{thong_bao['message']}''' + bcolors.ENDC)
+        print(bcolors.OKBLUE + f'''Lời nhắn của aki team: {thong_bao['message']}''' + bcolors.ENDC)
 
         token = (os.environ if on_replit else config)['token']
         await bot.start(token)
@@ -179,10 +181,10 @@ activities = itertools.cycle([
     discord.Activity(type=discord.ActivityType.watching, name=f"{bot.command_prefix}help")
 ])
 async def check_update():
-    user = "CCcutcanh"
+    user = "iotran207"
     repo = "Aki-Bot"
     
-    url = "https://api.github.com/repos/{}/{}/git/trees/main?recursive=1".format(user, repo)
+    url = "https://api.github.com/repos/{}/{}/git/trees/master?recursive=1".format(user, repo)
     async with aiohttp.ClientSession() as session:
         r = await session.get(url)
         res = await r.json()
