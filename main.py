@@ -201,7 +201,7 @@ async def check_update():
                 for i in list_command:
                     if i not in command and i.endswith(".py") and "/" not in i:
                         print(f"Có module mới chưa được update trong file của bạn là: {i}. Đang tiến hành update...")
-                        code = await session.get(f"https://raw.githubusercontent.com/CCcutcanh/Aki-Bot/main/command/{i}")
+                        code = await session.get(f"https://raw.githubusercontent.com/{user}/{repo}/master/command/{i}")
                         f = open(f"command/{i}", "w")
                         f.write(await code.text())
                         f.close()
