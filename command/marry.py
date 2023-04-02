@@ -26,15 +26,15 @@ class Marry(commands.Cog):
             await send.add_reaction("❎")
             await send.add_reaction("✅")
             
-            def check(reaction, user):
-                return user == ctx.author and str(reaction.emoji) == '✅'
+            def check(reaction, mem):
+                return mem == user and str(reaction.emoji) == '✅'
                 
             react = await self.bot.wait_for("reaction_add", check = check)
             if react:
                 await send.delete()
                 data[f"{ctx.author.id}"]["dating"] = {}
                 save_member_data(data)
-                data[str(ctx.author.id)]["dating"]["ngayyeunhau"] = datetime.datetime.now()
+                data[str(ctx.author.id)]["dating"]["ngayyeunhau"] = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S" )
                 data[str(ctx.author.id)]["dating"]["friend_name"] = user.name
                 data[str(ctx.author.id)]["dating"]["friend_avar"] = str(user.display_avatar.url)
                 data[f"{user.id}"]["dating"] = {}
