@@ -32,13 +32,20 @@
 
 ![Image](https://i.ibb.co/x8P8Q8m/image.png)
 
-### Contact
+## Contributing | Đóng góp module cho dự án
+
+<h3>Cách đóng góp</h3>
+<p>
+    • Bạn có thể đóng góp các module lệnh cho dự án qua việc liên hệ với chúng tôi qua <a href = "https://www.facebook.com/profile.php?id=100026348631060">facebook</a>. Rất mong nhận được sự giúp đỡ từ các bạn để dự án có thể ngày càng phát triển
+</p>
+
+## Author
 
 <p>Anh Duc: Discord - Anh Duc#5954 | <a href="https://www.facebook.com/profile.php?id=100026348631060">Facebook</a> | <a href="https://github.com/CCcutcanh">Github</a></p>
 <p>King: Discord - King.#4732</p>
 <p><a href="https://www.facebook.com/profile.php?id=100086701778255">Fanpage Facebook</a>
 
-#### Links
+### Links
 
 <p><a href ="https://github.com/discord/discord-api-docs">Discord API</a></p>
 <p><a href="https://github.com/Rapptz/discord.py">Discord.py</a></p>
