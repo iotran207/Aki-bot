@@ -3,8 +3,7 @@ from discord.ext import commands
 from discord import *
 import aiohttp
 import json
-
-
+import requests
 class Simimi(commands.Cog):
     config = {
         "name": "simimi",
@@ -30,16 +29,8 @@ class Simimi(commands.Cog):
                         f'SELECT server_channel_simimi FROM server_data WHERE server_id={message.guild.id}')
                     server_channel_simimi = self.bot.sql.fetchone()[0]
                     if message.channel.id == server_channel_simimi:
-                        async with aiohttp.ClientSession() as session:
-                            async with session.get(
-                                    f'https://simsimi.info/api/?lc=vi&text={message.content}') as get_answer:
-                                get_answer = await get_answer.text()
-                                answer = json.loads(get_answer)
-                                if answer["status"] == "success":
-                                    await message.reply(answer['message'])
-                                else:
-                                    await message.reply("oppa nói lại rõ hơn đc khum ạ,em chx hiểu lắm 😳")
-
+                        r = requests.post("https://api.simsimi.vn/v1/simtalk", headers = {"Content-Type": "application/x-www-form-urlencoded"}, data = {"text": f"{message.content}", "lc": "vn"})
+                        await message.reply(r.json()["message"])
             self.bot.database.commit()
         except Exception as e:
             print(e)
