@@ -34,7 +34,7 @@ class Dhbc(commands.Cog):
                 message = await self.bot.wait_for('message', check=check)
                 return message
             url_DHBC = [
-                'https://www.nguyenmanh.name.vn/api/dhbc1?apikey=KCL98tNB',
+                'https://www.nguyenmanh.name.vn/api/dhbc3?apikey=3AHlbNbA',
                 "https://goatbotserver.onrender.com/api/duoihinhbatchu"
             ]
             random_dhbc = random.choice(url_DHBC)
@@ -44,9 +44,9 @@ class Dhbc(commands.Cog):
                 json_DHBC = json.loads(data_DHBC)
             embed = discord.Embed(colour = random.choice(list_color), title = "===DUOI HINH BAT CHU===", description = 'đây là câu hỏi của bạn\nreply "gợi ý" neu ban muon xem goi y')
             if random_dhbc == url_DHBC[0]:
-                image_DHBC = json_DHBC['result']['link']
-                sokt = json_DHBC['result']['sokitu']
-                dapan = json_DHBC['result']['tukhoa']
+                image_DHBC = json_DHBC['result']['image1and2']
+                sokt = json_DHBC['result']['soluongkt']
+                dapan = json_DHBC['result']['wordcomplete']
                 async with aiohttp.ClientSession() as session:
                     img = await session.get(image_DHBC)
                     img = await img.read()
