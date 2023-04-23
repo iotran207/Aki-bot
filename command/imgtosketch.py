@@ -20,7 +20,7 @@ class Imgtosketch(commands.Cog):
             if ctx.message.attachments:
                 for i in ctx.message.attachments:
                     async with aiohttp.ClientSession() as session:
-                        a = await session.get(f"https://opencv-tutorial.aggstrawvn.repl.co/imgtosketch?url={i.url}")
+                        a = await session.get(f"https://opencv-tutorial.aggstrawvn.repl.co/imgtosketch?url={i.url}&key=aki-bot")
                         if a.status == 200:
                             a = json.loads(await a.text())
                             for i in range(1,6):
