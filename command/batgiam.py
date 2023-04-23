@@ -19,9 +19,9 @@ class Prison(commands.Cog):
     async def batgiam(self, ctx, member: discord.Member = None):
         try:
             async with aiohttp.ClientSession() as session:
-                get = await session.get("https://i.ibb.co/1MJ43Ds/ep1g-G3r-d.webp")
+                get = await session.get("https://i.ibb.co/L9rmLG0/prison.jpg")
                 get = await get.read()
-                f = await aiofiles.open(os.path.dirname(__file__) + "/cache/prison.png", mode="wb")
+                f = await aiofiles.open(os.path.dirname(__file__) + "/cache/prison.jpg", mode="wb")
                 await f.write(get)
                 await f.close()
                 if member == None:
@@ -30,7 +30,7 @@ class Prison(commands.Cog):
                 else:
                     tag = f"<@{member.id}>"
                     image = await easy_pil.load_image_async(member.display_avatar.url)
-                back = easy_pil.Editor(os.path.dirname(__file__) + "/cache/prison.png")
+                back = easy_pil.Editor(os.path.dirname(__file__) + "/cache/prison.jpg")
                 paste = easy_pil.Editor(image).circle_image()
                 paste.resize((110, 110))
                 back.paste(paste, (150, 85))
