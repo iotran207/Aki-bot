@@ -26,6 +26,7 @@ class Baicao(commands.Cog):
             def save(data):
                 save_member_data(data)
             await open_account(ctx.message.author.id)
+            await open_account(ctx.message.guild.id)
             self.bot.sql.execute(f'SELECT user_money FROM user_data WHERE user_id={ctx.author.id}')
             money = self.bot.sql.fetchone()[0]
             money_data = await get_bank_data()
