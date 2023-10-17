@@ -123,13 +123,13 @@ async def main():
     print(bcolors.WARNING + '                      MODULE' + bcolors.ENDC)
     print('═══════════════════════════════════════════════════')
     dem_lenh = 0
-    commands = os.listdir('command')
-    for command in commands:
+    #command = os.listdir('command')
+    for command in os.listdir('./commands'):
         if (command == '__pycache__' or command == 'random_list' or command == "data.json" or command == "cache" or command == "docs.py"):
             pass
         else:
             try:
-                await bot.load_extension(f"command.{command[:-3]}")
+                await bot.load_extension(f"commands.{command[:-3]}")
                 print(bcolors.OKBLUE + f'>> load thành công module {command[:-3]}' + bcolors.ENDC)
                 dem_lenh = dem_lenh + 1
                 time.sleep(0.025)
