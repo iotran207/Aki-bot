@@ -1,0 +1,13 @@
+{
+    "prefix":"-", 
+    "admin_name":"admin",
+    "admin_id":"admin",
+    "bot_name":"admin bot",
+    "status":"hi i'm aki bot",
+    "on_replit": false,
+    "event": {
+        "react_to_delete": false
+    },
+    "version": "1.0",
+    "token": ""
+}
