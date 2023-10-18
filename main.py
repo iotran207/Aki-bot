@@ -55,7 +55,7 @@ async def open_account(user):
 
 
 async def get_bank_data():
-    with open("command/data.json", 'r') as f:
+    with open("commands/data.json", 'r') as f:
         users = json.load(f)
     return users
 
@@ -65,7 +65,7 @@ def get_config():
     return config
     
 def save_member_data(data):
-    with open("command/data.json", 'w') as f:
+    with open("commands/data.json", 'w') as f:
         json.dump(data, f)
 
 
@@ -195,11 +195,11 @@ async def check_update():
             data = file["path"]
             if "__pycache__" in data:
                 pass
-            elif "command/" not in data:
+            elif "commands/" not in data:
                 pass
             else:
-                list_command.append(data.replace("command/", ""))
-                command = os.listdir("./command")
+                list_command.append(data.replace("commands/", ""))
+                command = os.listdir("./commands")
                 for i in list_command:
                     if i not in command and i.endswith(".py") and "/" not in i:
                         print(f"Có module mới chưa được update trong file của bạn là: {i}. Đang tiến hành update...")
